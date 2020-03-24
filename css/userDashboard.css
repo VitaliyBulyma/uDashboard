@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+}
+
+/* Login Form */
+
+/*Login form styling adapted from https://www.w3schools.com/css/css_form.asp*/
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  fieldset {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  /* End Login Form */
+.table{
+    width: 58%;
+    margin: 10px;
+    display: inline-block;
+    
+}
+.inline-block{
+    display: inline-block;
+}
+
+.jumbotron.profile{
+    width: 38%;
+    margin: 10px;
+    float: right;
+    
+}
+.profileImage img{
+    height: auto;
+    width: 16vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+}
+.custom-select{
+    width: 12vw;
+    background-color: #c3d5e7;
+}
+
+@media only screen and (max-width: 1000px) {
+    .jumbotron.profile{
+        
+        margin: 10px;
+        float: left;
+        width: 98%;
+        
+    }
+    .table{
+        width: 98%;
+        margin: 10px;
+        display: inline-block;
+        
+    }
+  }
