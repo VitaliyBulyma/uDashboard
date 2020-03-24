@@ -5,6 +5,10 @@
 /* User Form */
 
 /*Form styling adapted from https://www.w3schools.com/css/css_form.asp*/
+
+label{
+  color: black;
+}
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -16,18 +20,19 @@ input[type=text], input[type=password] {
   }
 
   
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
+  input[type=submit],button {
+    width: 49%;
+    background-color: #6f42c1;
+    color: black;
+    padding: 10px 10px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    display: inline-block;
   }
   
-  input[type=submit]:hover {
+  input[type=submit], button:hover {
     background-color: #45a049;
   }
   
@@ -35,7 +40,7 @@ input[type=text], input[type=password] {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    width: 460px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
@@ -58,12 +63,14 @@ input[type=text], input[type=password] {
     float: right;
     
 }
+
 .profileImage img{
     height: auto;
     width: 16vw;
     border: 1px solid black;
     border-radius: 10px;
-    display: inline-block;
+    display: block;
+
 }
 .custom-select{
     width: 12vw;
@@ -84,4 +91,11 @@ input[type=text], input[type=password] {
         display: inline-block;
         
     }
+  }
+
+  .hidden {
+    all: unset;
+    display: none;
+    position: absolute;
+    left: -10000px;
   }

@@ -154,9 +154,10 @@ $user_isAdmin=$pageuser->user_isAdmin;
   <img src="img/face.png" alt="generic face photo"></br>
  </div> 
 <form action="" method="POST">
-
-    <label for="sid">User ID</label>
-        <input type="text" id="sid" name="sid" value="<?=$user_id;?>" /></br>
+  <fieldset> 
+    <input type="text" class="hidden" id="sid" name="sid" value="<?=$user_id;?>" />     
+    <label for="uid">User ID</label>
+        <input type="text" id="uid" name="uid" value="<?=$user_id;?>" disabled /></br>
     <label for="userisAdmin">User Role</label>
         <input type="text" id="userisAdmin" name="userisAdmin" value="<?=$user_isAdmin;?>" disabled  /></br>
     <label for="userfname">First Name: </label>
@@ -170,7 +171,7 @@ $user_isAdmin=$pageuser->user_isAdmin;
   
     <button type="submit" name="updUser" id="updUser"> Update User</button>
     <button type="submit" name="deleteUser" id="deleteUser"> Delete Account</button>
-    
+      </fieldset>  
   
 </form>
 <div> 
