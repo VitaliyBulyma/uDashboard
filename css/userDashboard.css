@@ -2,9 +2,9 @@
     box-sizing: border-box;
 }
 
-/* Login Form */
+/* User Form */
 
-/*Login form styling adapted from https://www.w3schools.com/css/css_form.asp*/
+/*Form styling adapted from https://www.w3schools.com/css/css_form.asp*/
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -40,7 +40,8 @@ input[type=text], input[type=password] {
     margin-right: auto;
     margin-top: 10px;
   }
-  /* End Login Form */
+  /* End User Form */
+
 .table{
     width: 58%;
     margin: 10px;
