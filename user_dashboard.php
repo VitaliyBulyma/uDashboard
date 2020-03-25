@@ -15,7 +15,7 @@ $user_id = 2;
 $dbcon = Database::getDb();
 
 $s = new User();
-$users = $s->listUsers($dbcon); 
+// $users = $s->listUsers($dbcon); 
 
 
 // show user
@@ -77,13 +77,37 @@ $user_isAdmin=$pageuser->user_isAdmin;
         // End Delete User
 
 // end update User
+
+
+
+// List the surveys
+
+$dbcon = Database::getDb();
+
+$s = new Survey();
+
+// show Surveys that are related to the user
+
+$allsurveys = $s->displaySurveys($dbcon, $user_id);
+
+// var_dump ($allsurveys[0]);
+// echo count($allsurveys);
+// $survey_id= $surveys->survey_id;
+// $survey_title=$surveys->survey_title;
+// $category_name=$surveys->category_name;
+
+// below are also available in $surveys array
+// user_fname;
+// user_lname;
+// user_email;
+// user_password;
+// user_isAdmin;
+
+
+// END List the surveys
+
 ?>
 
-
-
-<!-- begin test -->
-
-<!-- end test -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,15 +123,17 @@ $user_isAdmin=$pageuser->user_isAdmin;
 <body>
 <main class="main">
 <!-- Top buttons -->
-<div .class="inline-block"><a class="btn btn-primary btn-lg" href="#" role="button">Create New Survey</a>
-    
-            <select class="custom-select">
+<div .class="inline-block">
+
+  <a class="btn btn-primary btn-lg" href="#" role="button">Create New Survey</a>
+   
+            <!-- <select class="custom-select">
                 <option selected="">Select Ownership</option>
                 <option value="1">Author</option>
                 <option value="2">User</option>            
-            </select>
+            </select> -->
     
-</div>
+</div> 
 
 </div>
 
@@ -117,33 +143,37 @@ $user_isAdmin=$pageuser->user_isAdmin;
     <tr>
       <th scope="col">Survey ID</th>
       <th scope="col">Survey Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Created</th>
-      <th scope="col">Status </th>
-      <th scope="col">Ownership</th>
+      <th scope="col">Survey Category</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Role</th>
     </tr>
   </thead>
   <tbody>
+<?php 
+    for ($i=0; $i<count($allsurveys); $i++ ){
+      echo '<tr class="table-primary">';
 
-    <tr class="table-primary">
-      <th scope="row">1</th>
-      <td> <a href="#"> Costco shopping</a></td>
-      <td>Survey about Costco shopping satisfaction</td>
-      <td>April 1, 1996</td>
-      <td>Completed</td>
-      <td>Author</td>
-     
-      
-    </tr>
-    <tr class="table-primary">
-      <th scope="row">2</th>
-      <td> <a href="#">Web Development at Humber College</a> </td>
-      <td>Alumni satisfaction survey for Web Development program at humber college</td>
-      <td>April 1, 2019</td>
-      <td>Not Started</td>
-      <td>User</td>
-      
-    </tr>
+      echo '<td scope="row">'.$allsurveys[$i]->survey_id.'</td>';
+      echo '<td scope="row"><a href="#">'.$allsurveys[$i]->survey_title.'</a></td>';
+      echo '<td scope="row">'.$allsurveys[$i]->category_name.'</td>';
+      echo '<td scope="row">'.$allsurveys[$i]->user_fname.'</td>';
+      echo '<td scope="row">'.$allsurveys[$i]->user_lname.'</td>';
+      echo '<td scope="row">';
+        if ($allsurveys[$i]->user_lname == 0){
+        echo "User";
+        }else{
+          echo "Admin";
+        }
+      echo '</td>';
+
+      echo '</tr>';
+    }
+
+
+    
+
+?>
   </tbody>
 </table> 
 
@@ -151,15 +181,21 @@ $user_isAdmin=$pageuser->user_isAdmin;
   <!-- <h1 class="display-3">Hello, <?= $user_fname ?></h1> -->
   <div class="profileImage">
 <!-- https://www.iconfinder.com/icons/131511/account_boss_caucasian_chief_director_directory_head_human_lord_main_male_man_manager_profile_user_icon -->
-  <img src="img/face.png" alt="generic face photo"></br>
+  <!-- <img src="img/face.png" alt="generic face photo"></br> -->
  </div> 
 <form action="" method="POST">
   <fieldset> 
     <input type="text" class="hidden" id="sid" name="sid" value="<?=$user_id;?>" />     
     <label for="uid">User ID</label>
         <input type="text" id="uid" name="uid" value="<?=$user_id;?>" disabled /></br>
-    <label for="userisAdmin">User Role</label>
-        <input type="text" id="userisAdmin" name="userisAdmin" value="<?=$user_isAdmin;?>" disabled  /></br>
+    <label for="userisAdmin">Role</label>
+        <input type="text" id="userisAdmin" name="userisAdmin" 
+        value="<?php if ($user_isAdmin == 0){
+                echo "User";
+        }else{
+          echo "Admin";
+        }
+        ?>" disabled  /></br>
     <label for="userfname">First Name: </label>
         <input type="text" id="userfname" name="userfname" value="<?=$user_fname?>" /> </br>
     <label for="userlname">Last Name: </label>

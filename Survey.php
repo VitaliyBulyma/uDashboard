@@ -2,7 +2,7 @@
 
 class Survey {
 
-    public function listSurveys($dbcon){
+    public function listAllSurveys($dbcon){
         $sql = "SELECT * FROM surveys";
         $pdostm = $dbcon->prepare($sql);
         $pdostm->execute();
@@ -17,16 +17,15 @@ class Survey {
         $count = $pst->execute();
         return $count;
     }
-    public function displaySurvey($dbcon, $survey_id){
+    public function displaySurveys($dbcon, $user_id){
 
-        $sql = "SELECT * FROM surveys where survey_id = :survey_id";
+        $sql = "SELECT * FROM `surveys` JOIN categories on surveys.category_id = categories.category_id JOIN users on surveys.user_id = users.user_id WHERE users.user_id= :user_id";
         $pst = $dbcon->prepare($sql);
-        $pst->bindParam(':survey_id', $survey_id);
+        $pst->bindParam(':user_id', $user_id);
         $pst->execute();
-        $indSurvey = $pst->fetch(PDO::FETCH_OBJ);
-        return $indSurvey;
+        $indsurveys= $pst->fetchAll(PDO::FETCH_OBJ);
+        return $indsurveys;
 
+    }
 }
-}
-
 ?>
