@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 17, 2020 at 10:20 PM
--- Server version: 5.7.24
--- PHP Version: 7.3.7
+-- Host: 127.0.0.1
+-- Generation Time: Mar 25, 2020 at 02:16 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -143,7 +143,10 @@ CREATE TABLE `surveys` (
 --
 
 INSERT INTO `surveys` (`survey_id`, `survey_title`, `user_id`, `category_id`) VALUES
-(1, 'SurveyBobby Satisfaction', 2, 1);
+(1, 'SurveyBobby ', 2, 1),
+(2, 'Costco', 2, 2),
+(3, 'Humber College', 1, 3),
+(4, 'No Frills', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -165,7 +168,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_fname`, `user_lname`, `user_email`, `user_password`, `user_isAdmin`) VALUES
-(1, 'Peter', 'Griffin', 'peter@griffin.com', 'peterpumpkineater', 0),
+(1, 'Peter', 'Griffin', 'peter@griffin.com', 'pumpkin', 0),
 (2, 'Gavin', 'Swanson', 'gavin@swanson.com', 'gavjoe123', 0);
 
 --
@@ -252,7 +255,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `surveys`
 --
 ALTER TABLE `surveys`
-  MODIFY `survey_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `survey_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
